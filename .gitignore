@@ -1,0 +1,75 @@
+# ===================================================
+# 🌍 NODE + REACT + PYTHON (.venv) - GITIGNORE MASTER
+# ===================================================
+
+# 🔧 Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ⚙️ Build / Output
+dist/
+build/
+.cache/
+.next/
+out/
+coverage/
+
+# 🔥 Environment variables
+.env
+.env.*
+*.env
+!.env.example
+
+# 🪣 Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 💻 Editor & IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 📸 OS-specific files
+.DS_Store
+Thumbs.db
+
+# 🐍 Python virtual env (caso exista IA/scripts auxiliares)
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 🚀 Misc
+*.bak
+*.tmp
+*.orig
+
+# 🧠 Frontend specific
+# React / Vite / Next
+*.tsbuildinfo
+*.eslintcache
+*.stylelintcache
+.sass-cache/
+.cache-loader/
+public/static/
+storybook-static/
+vite-dist/
+vite-cache/
+
+# 🔒 Lock files (opcional manter apenas um)
+# Se quiser forçar um padrão, remove os outros
+# yarn.lock
+# pnpm-lock.yaml
+
+# 🧩 VSCode config (pode deixar caso seja útil pro time)
+# .vscode/settings.json
