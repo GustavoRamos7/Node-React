@@ -1,0 +1,197 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Base === */
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0f0f0f;
+  color: #00ffe7;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+/* === Navbar === */
+nav {
+  background-color: rgba(26, 26, 26, 0.9);
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+  display: flex;
+  gap: 1rem;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+nav a {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #00e6ff;
+}
+
+.top-nav {
+  padding: 1rem;
+  background: linear-gradient(135deg, #0d1117, #01fefab2); /* azul neon degradê */
+    width: 100vw; /* ocupa toda a largura da viewport */
+  display: flex;
+  gap: 1rem;
+}
+
+.top-nav a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #e0e0e0;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.top-nav a:hover {
+  color: #00e6ff;
+}
+
+
+/* === Container === */
+.container {
+  max-width: 900px;
+  width: 90%;
+  margin: 100px auto 0 auto;
+  padding: 3rem 3.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 45px;
+  box-shadow: 0 8px 40px rgba(1, 254, 250, 0.817);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Títulos === */
+h1, h2, h3 {
+  text-align: center;
+  color: #06dcf4; /* azul neon mais definido */
+  text-shadow: 0 0 4px rgba(5, 239, 239, 0.934); /* sombra mais suave e visível */
+  font-weight: 700;
+}
+h1 {
+  font-size: 2.8rem;
+  letter-spacing: -1px;
+  color: #00f5ff;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.7);
+}
+h2, h3 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+/* === Inputs e formulários === */
+input, select, textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  color: #e0f7fa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+input:focus, select:focus, textarea:focus {
+  box-shadow: 0 0 8px #00e6ff;
+  outline: none;
+}
+label {
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+/* === Botões === */
+button {
+  background: linear-gradient(135deg, #00e6ff, #0077ff);
+  color: #0a0f1a;
+  font-weight: 700;
+  border: none;
+  border-radius: 15px;
+  padding: 0.7em 1.4em;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+button:hover {
+  background: linear-gradient(135deg, #00ffff, #00aaff);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #00ffe7;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 20px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #00ffe7;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:hover {
+  transform: scale(1.2);
+}
+
+
+/* === Cards === */
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+/* === Scroll personalizado === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f1a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00e6ff, #0077ff);
+  border-radius: 10px;
+}
+
+/* === Rodapé === */
+footer, .meu-footer {
+  text-align: center;
+  margin-top: 3em;
+  font-size: 0.9rem;
+  color: #8be9fd;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+/* === Animação === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+

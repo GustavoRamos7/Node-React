@@ -1,0 +1,37 @@
+.custom-toast {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #00ffe7;
+    font-family: 'Orbitron', sans-serif;
+    border: 1px solid #00ffe7;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00ffe7;
+    text-align: center;
+    padding: 16px;
+  }
+  
+  .custom-toast:hover {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #00ffe7;
+    font-family: 'Orbitron', sans-serif;
+    border: 1px solid #00ffe7;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00ffe7;
+    text-align: center;
+    padding: 16px;
+    animation: pulseGlow 2s infinite;
+  }
+  
+
+  .custom-body {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  
+  
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px #00ffe7; }
+    50% { box-shadow: 0 0 25px #00ffe7; }
+    100% { box-shadow: 0 0 10px #00ffe7; }
+  }
+  
