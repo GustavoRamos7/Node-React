@@ -223,6 +223,18 @@ body.login-body {
     text-transform: uppercase;
     letter-spacing: 1px;
   }
+
+  .perfil-ia-conteudo .subtitulo {
+    font-size: 1rem;
+    color: #00ffe7;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: left;
+  }
+  
+  
   
   .perfil-ia-conteudo {
     white-space: pre-wrap;
@@ -235,4 +247,27 @@ body.login-body {
     border-left: 2px solid #00ffe7;
   }
   
-  
+  .perfil-ia-conteudo h4,
+.perfil-ia-conteudo h5 {
+  color: #00ffe7;
+  font-family: 'Orbitron', sans-serif;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+.perfil-ia-conteudo ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  list-style-type: disc;
+  text-align: left;
+}
+
+.perfil-ia-conteudo li {
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}

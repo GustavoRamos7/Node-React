@@ -29,7 +29,6 @@ function App() {
     }
   }
 
-  callGenAI("Escreva um rap sobre programação");
 
   return (
     <Router>

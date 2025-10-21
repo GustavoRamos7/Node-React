@@ -1,4 +1,4 @@
-import db from '../db.mjs';
+import db from '../config/db.mjs';
 
 export async function buscarAlunoPorEmail(email) {
   const [result] = await db.query('SELECT * FROM aluno WHERE email = ?', [email]);

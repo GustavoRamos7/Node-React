@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import alunoRoutes from './routes/aluno.mjs';
 import genaiRoutes from './routes/genai.mjs';
+import perfilRoutes from './routes/perfil.mjs';
 
 
 
@@ -15,6 +16,7 @@ app.use(express.json());
 // 🔹 Rotas organizadas
 app.use('/cadastro', alunoRoutes);
 app.use('/api', genaiRoutes); // ✅ Rota GenAI centralizada
+app.use('/api', perfilRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

@@ -20,6 +20,7 @@ export default function CadastroAluno() {
 
   useEffect(() => {
     document.body.classList.add('login-body');
+    window.scrollTo(0, 0);
     return () => {
       document.body.classList.remove('login-body');
     };
@@ -27,13 +28,24 @@ export default function CadastroAluno() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    // Validação de data de nascimento no momento da digitação
+    if (name === 'data_nascimento') {
+      const data = new Date(value);
+      const ano = data.getFullYear();
+      const hoje = new Date().getFullYear();
+      if (ano < 1900 || ano > hoje) {
+        showToast.error('Ano de nascimento inválido.');
+        return;
+      }
+    }
+
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Validação de nome completo
     const nomeCompletoValido = /^[A-Za-zÀ-ÿ]{2,}(?: [A-Za-zÀ-ÿ]{2,})+$/.test(form.nome.trim());
     if (!nomeCompletoValido) {
       setErroNome(true);
@@ -48,7 +60,6 @@ export default function CadastroAluno() {
       return;
     }
 
-    // ✅ Verificação de idade mínima e validade da data
     const nascimento = new Date(form.data_nascimento);
     const hoje = new Date();
 
@@ -109,9 +120,7 @@ export default function CadastroAluno() {
           onChange={handleChange}
           placeholder="Nome completo"
         />
-        {erroNome && (
-          <p className="erro-nome">⚠️ Digite seu nome completo</p>
-        )}
+        {erroNome && <p className="erro-nome">⚠️ Digite seu nome completo</p>}
 
         <label>Email:</label>
         <input
@@ -119,6 +128,7 @@ export default function CadastroAluno() {
           name="email"
           value={form.email}
           onChange={handleChange}
+          placeholder="seuemail@exemplo.com"
         />
 
         <label>Senha:</label>
@@ -128,6 +138,7 @@ export default function CadastroAluno() {
             name="senha"
             value={form.senha}
             onChange={handleChange}
+            placeholder="Crie uma senha segura"
           />
           <span
             className="senha-toggle"
@@ -143,6 +154,8 @@ export default function CadastroAluno() {
           name="data_nascimento"
           value={form.data_nascimento}
           onChange={handleChange}
+          min="1900-01-01"
+          max="2025-12-31"
         />
 
         <label htmlFor="celular">Celular:</label>
@@ -155,6 +168,7 @@ export default function CadastroAluno() {
             onChange={handleChange}
             placeholder="(99) 99999-9999"
             className="input-tech"
+            maxLength={15}
           />
           <span className="input-icon">📡</span>
         </div>
