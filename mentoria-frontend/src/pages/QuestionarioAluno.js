@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { callGenAI } from '../utils/genai';
 import React, { useEffect, useState } from 'react';
 import '../styles/questionario.css';
@@ -9,8 +9,7 @@ import StarLoader from '../components/StarLoader';
 
 export default function QuestionarioAluno() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const alunoId = location.state?.alunoId;
+  const alunoId = localStorage.getItem('alunoId'); // ✅ Correto agora
 
   const [preferencias, setPreferencias] = useState([]);
   const [interesses, setInteresses] = useState([]);
@@ -21,17 +20,14 @@ export default function QuestionarioAluno() {
   const [gerandoPerfil, setGerandoPerfil] = useState(false);
   const [perfilGerado, setPerfilGerado] = useState(false);
 
-
   useEffect(() => {
     document.body.classList.add('login-body');
     document.body.style.overflow = gerandoPerfil ? 'hidden' : 'auto';
-  
     return () => {
       document.body.classList.remove('login-body');
       document.body.style.overflow = 'auto';
     };
   }, [gerandoPerfil]);
-  
 
   const sair = () => navigate('/');
 
@@ -46,63 +42,44 @@ export default function QuestionarioAluno() {
     { value: 'Musical', label: 'Musical' },
     { value: 'Naturalista', label: 'Naturalista' }
   ];
-  
 
   const opcoesInteresse = [
-    // Exatas e Tecnológicas
     { value: 'Tecnologia', label: 'Tecnologia' },
     { value: 'Matemática', label: 'Matemática' },
     { value: 'Engenharia', label: 'Engenharia' },
     { value: 'Ciência de Dados', label: 'Ciência de Dados' },
-  
-    // Humanas e Sociais
     { value: 'Comunicação', label: 'Comunicação' },
     { value: 'Psicologia', label: 'Psicologia' },
     { value: 'Educação', label: 'Educação' },
     { value: 'Direito', label: 'Direito' },
-  
-    // Criativas e Visuais
     { value: 'Artes', label: 'Artes' },
     { value: 'Design', label: 'Design' },
     { value: 'Moda', label: 'Moda' },
     { value: 'Gastronomia', label: 'Gastronomia' },
-  
-    // Negócios e Gestão
     { value: 'Gestão', label: 'Gestão' },
     { value: 'Negócios', label: 'Negócios' },
     { value: 'Marketing', label: 'Marketing' },
     { value: 'Empreendedorismo', label: 'Empreendedorismo' },
-  
-    // Saúde e Bem-estar
     { value: 'Saúde', label: 'Saúde' },
     { value: 'Esportes', label: 'Esportes' },
     { value: 'Nutrição', label: 'Nutrição' },
-  
-    // Sustentabilidade e Ciências Naturais
     { value: 'Meio Ambiente', label: 'Meio Ambiente' },
-    { value: 'Ciências Biológicas', label: 'Ciências Biológicas' },
-  
+    { value: 'Ciências Biológicas', label: 'Ciências Biológicas' }
   ];
 
   const formatarPerfilIA = (texto) => {
     return texto
       .replace(/^---$/gm, '')
-      .replace(/^## (.+)$/gm, '<h4>$1</h4>') // trata ## como título
-      .replace(/^### (.+)$/gm, '<h4>$1</h4>') // títulos markdown
-      .replace(/^#### (.+)$/gm, '<h5>$1</h5>') // subtítulos markdown
-      .replace(/^(\d+\.\s.+)$/gm, '<h4>$1</h4>') // títulos numerados
-      .replace(/(<h4>.*<\/h4>\n)([^\n*]+)/g, '$1<h5>$2</h5>') // subtítulo abaixo do h4
-      .replace(/^\s*\*{1,2}\s(.+)/gm, '<li>$1</li>') // transforma * em <li>
-      .replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>') // envolve todos os <li> em <ul>
-      .replace(/<\/ul>\s*<ul>/g, '') // junta listas seguidas
+      .replace(/^## (.+)$/gm, '<h4>$1</h4>')
+      .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+      .replace(/^#### (.+)$/gm, '<h5>$1</h5>')
+      .replace(/^(\d+\.\s+Desafio: .+)$/gm, '<h5>$1</h5>')
+      .replace(/^\s*Como superar:\s*(.+)$/gm, '<p><strong>Como superar:</strong> $1</p>')
       .replace(/^\s*\*\s*/gm, '') // remove * soltos
-      .replace(/\n{2,}/g, '\n') // remove quebras excessivas
-      .replace(/Perfil Vocacional:/g, 'Perfil Vocacional Detalhado: <br/> <br/> '); // quebra de linha após título
+      .replace(/\n{2,}/g, '\n')
+      .replace(/Perfil Vocacional:/g, 'Perfil Vocacional Detalhado: <br/><br/>');
   };
   
-  
-  
-
   const customStyles = {
     control: (base) => ({
       ...base,
@@ -142,29 +119,49 @@ export default function QuestionarioAluno() {
   const buscarTrilhas = async () => {
     try {
       const res = await axios.post('http://localhost:3001/trilhas/sugeridas', {
-        interesses
+        alunoId
       });
-      setTrilhasSugeridas(res.data.trilhas);
+  
+      if (res.data.trilhas?.length) {
+        setTrilhasSugeridas(res.data.trilhas);
+        toast.success('Trilhas sugeridas encontradas!');
+      } else {
+        toast.info('Nenhuma trilha sugerida encontrada para seu perfil.');
+      }
     } catch (err) {
       toast.error('Erro ao buscar trilhas');
+      console.error('❌ Erro ao buscar trilhas:', err);
     }
   };
-
-  const atribuirTrilha = async (trilhaId) => {
-    try {
-      await axios.post('http://localhost:3001/trilhas/atribuir', {
-        alunoId,
-        trilhaId
-      });
-      toast.success('Trilha atribuída com sucesso!');
-    } catch (err) {
-      toast.error('Erro ao atribuir trilha');
-    }
-  };
+  
+  // const atribuirTrilha = async (trilhaId) => {
+  //   try {
+  //     const res = await axios.post('http://localhost:3001/trilhas/atribuir', {
+  //       alunoId,
+  //       trilhaId
+  //     });
+  //     toast.success(`Trilha atribuída com sucesso! Score: ${res.data.score}`);
+  //   } catch (err) {
+  //     if (err.response?.status === 409) {
+  //       toast.info('Essa trilha já foi atribuída a você.');
+  //     } else {
+  //       toast.error('Erro ao atribuir trilha');
+  //     }
+  //   }
+  // };
 
   const salvarPerfil = async (perfilIA) => {
+    console.log('📤 Enviando para backend:', {
+      alunoId,
+      preferencias,
+      interesses,
+      metas,
+      nivel,
+      perfilIA
+    });
+
     try {
-      await axios.post('http://localhost:3001/api/perfil', {
+      const response = await axios.post('http://localhost:3001/api/perfil', {
         alunoId,
         preferencias,
         interesses,
@@ -172,13 +169,22 @@ export default function QuestionarioAluno() {
         nivel,
         perfilIA
       });
-      toast.success('Perfil salvo no banco!');
+
+      console.log('📤 Resposta do backend:', response);
+
+      if (response.status === 200) {
+        toast.success('Perfil salvo com sucesso!');
+        return true;
+      } else {
+        toast.error('Erro ao salvar perfil no banco');
+        return false;
+      }
     } catch (err) {
-      console.error('Erro ao salvar perfil:', err);
+      console.error('❌ Erro ao salvar perfil:', err);
       toast.error('Erro ao salvar perfil no banco');
+      return false;
     }
   };
-  
 
   const gerarPerfilIA = async () => {
     if (!metas.trim()) {
@@ -189,41 +195,49 @@ export default function QuestionarioAluno() {
       toast.warn('O perfil já foi gerado. Recarregue a página para gerar novamente.');
       return;
     }
-  
+
     setGerandoPerfil(true);
-  
+
     const prompt = `
-  Sou um aluno com o seguinte perfil:
-  - Estilo de aprendizagem: ${preferencias.join(', ')}
-  - Interesses: ${interesses.join(', ')}
-  - Metas profissionais: ${metas}
-  - Nível de carreira: ${nivel}
-  
-  Gere um perfil vocacional detalhado, incluindo:
-  1. Aptidões principais
-  2. Estilo de trabalho ideal
-  3. Áreas profissionais sugeridas
-  4. Recomendações de estudo e ferramentas
-  5. Possíveis desafios e como superá-los
-  `;
-  
+    Sou um aluno com o seguinte perfil:
+    - Estilo de aprendizagem: ${preferencias.join(', ')}
+    - Interesses: ${interesses.join(', ')}
+    - Metas profissionais: ${metas}
+    - Nível de carreira: ${nivel}
+    
+    Gere um perfil vocacional detalhado e bem formatado, com as seguintes seções:
+    
+    1. Aptidões principais — em parágrafos curtos
+    2. Estilo de trabalho ideal — em parágrafos curtos
+    3. Áreas profissionais sugeridas — como uma lista com marcadores
+    4. Recomendações de estudo e ferramentas — como uma lista com marcadores
+    5. Possíveis desafios e como superá-los — cada desafio numerado, seguido de uma explicação e uma solução clara. Use o formato:
+    
+       1. Desafio: [nome do desafio]
+          Como superar: [explicação da solução]
+    
+    Evite usar asteriscos (*) ou marcações soltas. Use estrutura clara com títulos, subtítulos e listas.
+    `;
+
     const resposta = await callGenAI(prompt);
-  
+
     if (resposta?.output) {
       const perfilGeradoTexto = resposta.output.replace(/\*\*/g, '');
-      setPerfilIA(perfilGeradoTexto);
-      setPerfilGerado(true);
-  
-      await salvarPerfil(perfilGeradoTexto);
-  
-      toast.success('Perfil salvo com sucesso!');
+      const sucesso = await salvarPerfil(perfilGeradoTexto);
+
+      if (sucesso) {
+        setPerfilIA(perfilGeradoTexto);
+        setPerfilGerado(true);
+      } else {
+        setGerandoPerfil(false);
+        return;
+      }
     } else {
       toast.error('Erro ao gerar perfil.');
     }
-  
+
     setGerandoPerfil(false);
   };
-  
 
   return (
     <div className="cadastro-section">
@@ -258,7 +272,11 @@ export default function QuestionarioAluno() {
         <small className="campo-dica">Você pode selecionar múltiplos interesses</small>
 
         <label>Metas Profissionais:</label>
-        <textarea value={metas} onChange={e => setMetas(e.target.value)} />
+        <textarea
+        value={metas}
+        onChange={e => setMetas(e.target.value)}
+        placeholder="Ex: Quero crescer na área de tecnologia e atuar com projetos inovadores."
+      />
 
         <label>Nível de Carreira:</label>
         <select value={nivel} onChange={e => setNivel(e.target.value)}>
@@ -273,33 +291,39 @@ export default function QuestionarioAluno() {
         </button>
         <button
           type="button"
-          onClick={buscarTrilhas}
+          onClick={() => navigate('/trilhas')}
           disabled={!perfilGerado}
           style={!perfilGerado ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
         >
-          Buscar Trilhas Sugeridas
+          Ver Trilhas Sugeridas
         </button>
       </form>
 
-      {gerandoPerfil && <StarLoader />}
+      <small className="campo-dica">Essa trilha será atribuída por seu mentor.</small>
 
-    {perfilIA && !gerandoPerfil && (
-      <div className="perfil-ia">
-        <h3 className="perfil-ia-titulo">🔹 Perfil Vocacional Gerado</h3>
-        <div
-          className="perfil-ia-conteudo"
-          dangerouslySetInnerHTML={{ __html: formatarPerfilIA(perfilIA.replace(/\*\*/g, '')) }}
-        />
-      </div>
-    )}
 
-      {trilhasSugeridas.map(trilha => (
-        <div key={trilha.id} className="trilha-card">
+      {/* {trilhasSugeridas.map(trilha => (
+        <div key={trilha.trilha_id} className="trilha-card">
           <h4>{trilha.titulo}</h4>
           <p>{trilha.descricao}</p>
-          <button onClick={() => atribuirTrilha(trilha.id)}>Atribuir</button>
+          <button onClick={() => atribuirTrilha(trilha.trilha_id)}>
+            Atribuir trilha
+          </button>
         </div>
-      ))}
+      ))} */}
+
+
+      {gerandoPerfil && <StarLoader />}
+
+      {perfilIA && !gerandoPerfil && (
+        <div className="perfil-ia">
+          <h3 className="perfil-ia-titulo">🔹 Perfil Vocacional Gerado</h3>
+          <div
+            className="perfil-ia-conteudo"
+            dangerouslySetInnerHTML={{ __html: formatarPerfilIA(perfilIA.replace(/\*\*/g, '')) }}
+          />
+        </div>
+      )}
     </div>
   );
 }

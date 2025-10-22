@@ -16,7 +16,7 @@ app.use(express.json());
 // 🔹 Rotas organizadas
 app.use('/cadastro', alunoRoutes);
 app.use('/api', genaiRoutes); // ✅ Rota GenAI centralizada
-app.use('/api', perfilRoutes);
+app.use('/api/perfil', perfilRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

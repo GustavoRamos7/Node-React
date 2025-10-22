@@ -1,0 +1,179 @@
+/* ==========================
+   ESTILOS GERAIS DA PÁGINA DE BOAS-VINDAS
+   ========================== */
+   .boasvindas-page {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0f0f0f;
+    color: #00ffe7;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 0;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  /* Animação de entrada */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ==========================
+     SEÇÃO PRINCIPAL (HERO)
+     ========================== */
+  .boasvindas-page .hero-section {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* garante que tudo comece de cima */
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .boasvindas-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .boasvindas-page .hero-section h1 {
+    font-size: 2.5rem;
+    color: #00ffe7;
+    margin-bottom: 1rem;
+    word-break: keep-all;
+  }
+  
+  .boasvindas-page .hero-section p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  /* ==========================
+     PERFIL IA
+     ========================== */
+  .boasvindas-page .perfil-ia {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #111;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    overflow-wrap: break-word;
+  }
+  
+  .boasvindas-page .perfil-ia-titulo {
+    font-size: 1.8rem;
+    color: #00ffe7;
+    margin-bottom: 1rem;
+  }
+  
+  .boasvindas-page .perfil-ia-conteudo {
+    line-height: 1.6;
+    color: #eee;
+    white-space: pre-wrap;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 400px; /* evita conteúdo gigante quebrando layout */
+    padding-right: 0.5rem;
+  }
+  
+  /* Scroll estilizado para textos longos */
+  .boasvindas-page .perfil-ia-conteudo::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .boasvindas-page .perfil-ia-conteudo::-webkit-scrollbar-thumb {
+    background-color: #00ffe7;
+    border-radius: 10px;
+  }
+  
+  /* ==========================
+     BOTÕES DE AÇÃO
+     ========================== */
+  .boasvindas-page .acoes {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .boasvindas-page .acoes button {
+    background-color: #00ffe7;
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .boasvindas-page .acoes button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* ==========================
+     RESPONSIVIDADE
+     ========================== */
+  @media (max-width: 768px) {
+    .boasvindas-page .hero-section h1 {
+      font-size: 2rem;
+    }
+  
+    .boasvindas-page .perfil-ia {
+      padding: 1.5rem;
+    }
+  
+    .boasvindas-page .perfil-ia-conteudo {
+      max-height: 300px;
+    }
+  
+    .boasvindas-page .acoes button {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .boasvindas-page {
+      padding: 1rem 0;
+    }
+  
+    .boasvindas-page .hero-section {
+      padding-top: 4rem;
+    }
+  
+    .boasvindas-page .hero-section h1 {
+      font-size: 1.8rem;
+    }
+  
+    .boasvindas-page .hero-section p {
+      font-size: 1rem;
+    }
+  }
+  

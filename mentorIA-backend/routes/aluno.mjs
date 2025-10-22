@@ -25,12 +25,22 @@ router.post('/aluno', async (req, res) => {
     const senha_hash = await bcrypt.hash(senha, 10);
     const aluno_id = uuidv4();
 
+    // Converte DD/MM/YYYY para Date
+    let dataConvertida = null;
+    if (data_nascimento) {
+      const [dia, mes, ano] = data_nascimento.split('/');
+      dataConvertida = new Date(`${ano}-${mes}-${dia}`);
+      if (isNaN(dataConvertida.getTime())) {
+        return res.status(400).json({ error: 'Data de nascimento inválida.' });
+      }
+    }
+
     await criarAluno({
       aluno_id,
       nome,
       email,
       senha_hash,
-      data_nascimento,
+      data_nascimento: dataConvertida,
       celular,
       consentimento
     });

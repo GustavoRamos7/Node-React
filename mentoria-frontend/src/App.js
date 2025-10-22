@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles/toast.css';
 import QuestionarioAluno from './pages/QuestionarioAluno';
 import Login from './pages/Login';
+import TrilhasSugeridas from './pages/TrilhasSugeridas';
+import BoasVindasAluno from './pages/BoasVindasAluno';
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/questionario" element={<QuestionarioAluno />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/trilhas" element={<TrilhasSugeridas />} />
+        <Route path="/inicio" element={<BoasVindasAluno />} />
       </Routes>
 
       {/* 🔹 ToastContainer com botão customizado */}

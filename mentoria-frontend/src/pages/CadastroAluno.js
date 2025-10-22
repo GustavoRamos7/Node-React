@@ -28,18 +28,6 @@ export default function CadastroAluno() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
-    // Validação de data de nascimento no momento da digitação
-    if (name === 'data_nascimento') {
-      const data = new Date(value);
-      const ano = data.getFullYear();
-      const hoje = new Date().getFullYear();
-      if (ano < 1900 || ano > hoje) {
-        showToast.error('Ano de nascimento inválido.');
-        return;
-      }
-    }
-
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
   };
 
@@ -55,12 +43,21 @@ export default function CadastroAluno() {
       setErroNome(false);
     }
 
-    if (!form.nome || !form.email || !form.senha || !form.consentimento) {
+    if (!form.nome || !form.email || !form.senha || !form.consentimento || !form.data_nascimento) {
       toast.warn('Preencha todos os campos obrigatórios.');
       return;
     }
 
-    const nascimento = new Date(form.data_nascimento);
+    // Converte data de YYYY-MM-DD para DD/MM/YYYY
+    const partes = form.data_nascimento.split('-');
+    if (partes.length !== 3) {
+      showToast.error('Insira a data de nascimento no formato DD/MM/AAAA.');
+      return;
+    }
+
+    const [ano, mes, dia] = partes;
+    const dataFormatada = `${dia}/${mes}/${ano}`;
+    const nascimento = new Date(`${ano}-${mes}-${dia}`);
     const hoje = new Date();
 
     if (isNaN(nascimento.getTime())) {
@@ -74,9 +71,9 @@ export default function CadastroAluno() {
     }
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
-    const mes = hoje.getMonth() - nascimento.getMonth();
-    const dia = hoje.getDate() - nascimento.getDate();
-    if (mes < 0 || (mes === 0 && dia < 0)) {
+    const m = hoje.getMonth() - nascimento.getMonth();
+    const d = hoje.getDate() - nascimento.getDate();
+    if (m < 0 || (m === 0 && d < 0)) {
       idade--;
     }
 
@@ -89,12 +86,13 @@ export default function CadastroAluno() {
       const res = await fetch('http://localhost:3001/cadastro/aluno', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
+        body: JSON.stringify({ ...form, data_nascimento: dataFormatada })
       });
 
       const data = await res.json();
 
       if (res.status === 201) {
+        localStorage.setItem('alunoId', data.alunoId);
         toast.success('Cadastro realizado com sucesso!');
         setTimeout(() => navigate('/login'), 1500);
       } else if (res.status === 409) {
@@ -154,8 +152,7 @@ export default function CadastroAluno() {
           name="data_nascimento"
           value={form.data_nascimento}
           onChange={handleChange}
-          min="1900-01-01"
-          max="2025-12-31"
+          min="1950-01-01"
         />
 
         <label htmlFor="celular">Celular:</label>

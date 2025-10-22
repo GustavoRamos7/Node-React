@@ -39,9 +39,24 @@ export default function Login() {
         senha
       });
 
+      console.log('🔍 Resposta do login:', res.data);
+
       if (res.data.success) {
+        const alunoId = res.data.aluno_id;
+        localStorage.setItem('alunoId', alunoId);
         toast.success('Login realizado com sucesso!');
-        setTimeout(() => navigate('/questionario'), 1500);
+
+        try {
+          const perfilRes = await axios.get(`http://localhost:3001/api/perfil/verificar/${alunoId}`);
+          if (perfilRes.data.existe) {
+            setTimeout(() => navigate('/inicio'), 1500); // vai para BoasVindasAluno.js
+          } else {
+            setTimeout(() => navigate('/questionario'), 1500); // vai para QuestionarioAluno.js
+          }
+        } catch (err) {
+          console.error('Erro ao verificar perfil:', err);
+          setTimeout(() => navigate('/questionario'), 1500); // fallback
+        }
       } else {
         toast.error('Credenciais inválidas. Tente novamente.');
       }
