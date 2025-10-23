@@ -13,6 +13,8 @@ import BoasVindasAluno from './pages/BoasVindasAluno';
 import GestorLanding from './pages/GestorLanding';
 import GestorCadastro from './pages/GestorCadastro';
 import GestorLogin from './pages/GestorLogin';
+import GestorAtribuirTrilha from './pages/GestorAtribuirTrilha';
+import TrilhaDetalhes from './pages/TrilhasDetalhes';
 
 
 
@@ -47,6 +49,8 @@ function App() {
   <Route path="/gestor/cadastro" element={<GestorCadastro />} />
   <Route path="/gestor/login" element={<GestorLogin />} />
   <Route path="/painel-gestor" element={<Gestor />} /> {/* painel principal */}
+  <Route path="/gestor/atribuir-trilha" element={<GestorAtribuirTrilha />} />
+  <Route path="/trilha/:trilhaId" element={<TrilhaDetalhes />} />
 </Routes>
 
       <ToastContainer

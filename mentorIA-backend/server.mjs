@@ -15,11 +15,11 @@ app.use(cors());
 app.use(express.json());
 
 // 🔹 Rotas organizadas
-app.use('/cadastro', alunoRoutes);
+app.use('/api/aluno', alunoRoutes);
 app.use('/api', genaiRoutes);
 app.use('/api/perfil', perfilRoutes);
 app.use('/api', trilhaRoutes);
-app.use('/api', gestorRoutes);
+app.use('/api/gestor', gestorRoutes);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

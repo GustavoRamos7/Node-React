@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import '../styles/home.css';
-import '../styles/gestor.css';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Select from 'react-select';
 import TabelaTrilhas from '../components/TabelaTrilhas.jsx';
+import '../styles/gestor.css';
 
 export default function Gestor() {
+  const navigate = useNavigate();
+
   const [titulo, setTitulo] = useState('');
   const [descricao, setDescricao] = useState('');
   const [estilo, setEstilo] = useState([]);
@@ -153,6 +155,16 @@ export default function Gestor() {
   return (
     <div className="cadastro-section">
       <h2>🧠 Painel do Gestor</h2>
+
+      <div style={{ marginBottom: '1rem' }}>
+        <button
+          className="section-button"
+          onClick={() => navigate('/gestor/atribuir-trilha')}
+        >
+          📚 Atribuir Trilha a Aluno
+        </button>
+      </div>
+
       <form onSubmit={(e) => { e.preventDefault(); cadastrarTrilha(); }} className="cadastro-form">
         <label>Título da trilha:</label>
         <input value={titulo} onChange={e => setTitulo(e.target.value)} placeholder="Ex: Fundamentos da IA" />
@@ -196,15 +208,11 @@ export default function Gestor() {
       </form>
 
       {trilhas.length > 0 && (
-  <>
-    
-    {/* Tabela interativa */}
-    <div className="tabela-trilhas-wrapper">
-      <h3 className="perfil-ia-titulo">📋 Visualização em Tabela</h3>
-      <TabelaTrilhas trilhas={trilhas} />
-    </div>
-  </>
-)}
+        <div className="tabela-trilhas-wrapper">
+          <h3 className="perfil-ia-titulo">📋 Visualização em Tabela</h3>
+          <TabelaTrilhas trilhas={trilhas} />
+        </div>
+      )}
     </div>
   );
 }

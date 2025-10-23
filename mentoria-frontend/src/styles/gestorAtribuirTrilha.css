@@ -1,0 +1,279 @@
+/* Container principal */
+.gestor-atribuir {
+  background-color: #0a0a0a;
+  color: #00ffe7;
+  font-family: 'Orbitron', sans-serif;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  max-width: 960px;
+  margin: 3rem auto;
+}
+
+/* Títulos principais */
+.gestor-atribuir h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #00ffe7;
+  border-bottom: 1px solid #00ffe7;
+  padding-bottom: 0.5rem;
+}
+
+/* Selects */
+.gestor-atribuir select {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #00ffe7;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+select:focus {
+  outline: none;
+  border-color: #00d6c3;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #00ffe7;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #00d6c3;
+}
+
+/* Tabela de alunos */
+.tabela-alunos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background-color: #111;
+  box-shadow: 0 0 10px rgba(0, 255, 231, 0.2);
+}
+
+.tabela-alunos th,
+.tabela-alunos td {
+  padding: 0.75rem;
+  border: 1px solid #00ffe7;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+.tabela-alunos th {
+  background-color: #0a0a0a;
+  font-weight: bold;
+  color: #00ffe7;
+}
+
+.tabela-alunos tr:hover {
+  background-color: #1a1a1a;
+}
+
+/* Perfil do aluno */
+.perfil-aluno {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #1a1a1a;
+  border-left: 4px solid #00ffe7;
+  box-shadow: 0 0 10px rgba(0, 255, 231, 0.1);
+  color: #e0e0e0;
+}
+
+.perfil-aluno h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #00ffe7;
+}
+
+.perfil-aluno p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.perfil-aluno .rotulo {
+  color: #00ffe7;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Perfil IA */
+.perfil-ia {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0a0a0a, #001f1f);
+  border: 1px solid #00ffe7;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  color: #e0fdfd;
+  font-family: 'Orbitron', sans-serif;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.perfil-ia-titulo {
+  font-size: 1.6rem;
+  color: #00ffe7;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+.perfil-ia-conteudo {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.perfil-ia-conteudo h2,
+.perfil-ia-conteudo h3,
+.perfil-ia-conteudo h4,
+.perfil-ia-conteudo h5,
+.perfil-ia-conteudo h6 {
+  color: #00ffe7;
+  font-family: 'Orbitron', sans-serif;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.3);
+}
+
+.perfil-ia-conteudo p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #e0fdfd;
+}
+
+.perfil-ia-conteudo ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  list-style-type: disc;
+}
+
+.perfil-ia-conteudo li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Roadmap Vocacional */
+.roadmap-vocacional {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #0f0f0f;
+  border: 1px solid #00ffe7;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  color: #e0fdfd;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.fluxograma-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.fluxograma-etapa {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  min-width: 220px;
+  max-width: 320px;
+  flex: 1;
+}
+
+.etapa-icone {
+  background-color: #00ffe7;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.etapa-conteudo {
+  flex: 1;
+}
+
+.etapa-texto {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.fluxograma-seta {
+  font-size: 1.5rem;
+  color: #00ffe7;
+  align-self: center;
+}
+
+
+.trilha-card button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #ff4d4d;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.trilha-card button:hover {
+  background-color: #e60000;
+}
+
+.botao-remover-trilha {
+  all: unset;
+  background-color: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  margin-left: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.botao-remover-trilha:hover {
+  background-color: #ff4d4d;
+  color: #000;
+  box-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+}

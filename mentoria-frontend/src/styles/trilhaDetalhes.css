@@ -1,0 +1,102 @@
+.trilha-detalhes-page {
+    padding: 2rem;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  .trilha-detalhes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .voltar-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .trilha-info p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+  }
+  
+  .conteudo-sugerido h3 {
+    margin-top: 2rem;
+    color: var(--heading-color);
+  }
+  
+  .conteudo-item {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  }
+  
+  .conteudo-item h4 {
+    margin-bottom: 0.5rem;
+    color: var(--heading-color);
+  }
+  
+  .conteudo-item textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 0.5rem;
+  }
+  
+  .conteudo-item button {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .conteudo-item a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .conteudo-item a:hover {
+    text-decoration: underline;
+  }
+  
+  /* 🌞 Modo claro */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg-color: #f4f8fc;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --heading-color: #2c3e50;
+      --button-bg: #888;
+      --button-text: #ffffff;
+    }
+  }
+  
+  /* 🌙 Modo escuro */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --heading-color: #90caf9;
+      --button-bg: #444;
+      --button-text: #ffffff;
+    }
+  }
+  

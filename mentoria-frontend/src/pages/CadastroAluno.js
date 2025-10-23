@@ -3,6 +3,8 @@ import '../styles/home.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { showToast } from '../utils/toast';
+import axios from 'axios';
+
 
 export default function CadastroAluno() {
   const navigate = useNavigate();
@@ -83,10 +85,9 @@ export default function CadastroAluno() {
     }
 
     try {
-      const res = await fetch('http://localhost:3001/cadastro/aluno', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, data_nascimento: dataFormatada })
+      const res = await axios.post('http://localhost:3001/api/aluno', {
+        ...form,
+        data_nascimento: dataFormatada
       });
 
       const data = await res.json();

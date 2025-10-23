@@ -34,7 +34,7 @@ export default function Login() {
     }
 
     try {
-      const res = await axios.post('http://localhost:3001/cadastro/login', {
+      const res = await axios.post('http://localhost:3001/api/aluno/login', {
         email,
         senha
       });

@@ -1,37 +1,24 @@
 import router from "./aluno.mjs";
 
-router.post('/trilhas/sugeridas', async (req, res) => {
-  const { alunoId } = req.body;
+router.get('/trilhas/sugeridas/:alunoId', async (req, res) => {
+  const { alunoId } = req.params;
 
   try {
-    const [perfil] = await db.query(`
-      SELECT estilo_aprendizagem, interesses, nivel_carreira
-      FROM perfil_aprendizagem
-      WHERE aluno_id = ?
-    `, [alunoId]);
-
-    if (!perfil.length) {
-      return res.status(404).json({ error: 'Perfil não encontrado.' });
-    }
-
-    const { estilo_aprendizagem, interesses, nivel_carreira } = perfil[0];
-
     const [trilhas] = await db.query(`
-      SELECT trilha_id, titulo, descricao
-      FROM trilha_estudo
-      WHERE
-        estilo_aprendizagem LIKE ? OR
-        interesses LIKE ? OR
-        nivel_carreira = ?
-      LIMIT 5
-    `, [`%${estilo_aprendizagem}%`, `%${interesses}%`, nivel_carreira]);
+      SELECT te.trilha_id, te.titulo, te.descricao, ta.score_adequacao
+      FROM trilha_aluno ta
+      JOIN trilha_estudo te ON ta.trilha_id = te.trilha_id
+      WHERE ta.aluno_id = ?
+      ORDER BY ta.dt_atribuicao DESC
+    `, [alunoId]);
 
     res.json({ trilhas });
   } catch (err) {
-    console.error('Erro ao buscar trilhas sugeridas:', err);
-    res.status(500).json({ error: 'Erro interno ao buscar trilhas.' });
+    console.error('Erro ao buscar trilhas atribuídas:', err);
+    res.status(500).json({ error: 'Erro ao buscar trilhas atribuídas.' });
   }
 });
+
 
 router.post('/trilhas/atribuir', async (req, res) => {
   const { alunoId, trilhaId } = req.body;
