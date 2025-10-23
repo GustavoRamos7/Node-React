@@ -4,7 +4,7 @@ import db from '../config/db.mjs';
 const router = Router();
 
 // ✅ Rota para salvar ou substituir perfil
-router.post('/perfil', async (req, res) => {
+router.post('/', async (req, res) => {
   const { alunoId, preferencias, interesses, metas, nivel, perfilIA } = req.body;
 
   console.log('📥 Dados recebidos do frontend:', {

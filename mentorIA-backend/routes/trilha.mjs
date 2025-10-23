@@ -56,7 +56,7 @@ router.post('/trilhas/atribuir', async (req, res) => {
     const score = calcularScore(perfil[0], trilha[0]);
 
     await db.query(`
-      INSERT INTO trilha_aluno (trilha_aluno_id, aluno_id, trilha_id, score_adequacao)
+      INSERT INTO trilha_aluno (trilha_aluno_id, aluno_id, trilha_id, score_adequacao, dt_atribuicao)
       VALUES (UUID(), ?, ?, ?)
     `, [alunoId, trilhaId, score]);
 
