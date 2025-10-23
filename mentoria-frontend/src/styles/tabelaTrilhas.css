@@ -1,0 +1,77 @@
+/* ==========================
+   BOTÕES TABELA TRILHAS
+========================== */
+.botao-tabela {
+    padding: 0.3rem 0.6rem; /* menor padding */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    background: none; /* sem background */
+    transition: color 0.2s ease;
+  }
+
+  .tabela-trilhas td {
+    padding: 0.5rem 1rem; /* espaço interno em cima/baixo e esquerda/direita */
+  }
+  
+  
+  /* Botão de editar */
+  .editar-tabela {
+    color: #00ffe7;
+  }
+  
+  .editar-tabela:hover {
+    color: #00d6c3;
+  }
+  
+  /* Botão de excluir */
+  .excluir-tabela {
+    color: #ff4444;
+  }
+  
+  .excluir-tabela:hover {
+    color: #cc0000;
+  }
+  
+
+
+  .toast-confirmacao {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+  }
+  
+  .toast-mensagem {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .toast-botoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .botao-toast {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .botao-toast.confirmar {
+    background-color: #00ffe7;
+    color: #000;
+  }
+  
+  .botao-toast.cancelar {
+    background-color: #444;
+    color: #fff;
+  }
+  

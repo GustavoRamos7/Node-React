@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import '../styles/questionario.css';
 import Select from 'react-select';
 import StarLoader from '../components/StarLoader';
+import Swal from 'sweetalert2';
+
 
 export default function QuestionarioAluno() {
   const navigate = useNavigate();
@@ -19,15 +21,26 @@ export default function QuestionarioAluno() {
   const [perfilIA, setPerfilIA] = useState('');
   const [gerandoPerfil, setGerandoPerfil] = useState(false);
   const [perfilGerado, setPerfilGerado] = useState(false);
-
+  
   useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+  
+    window.addEventListener('beforeunload', handleBeforeUnload);
     document.body.classList.add('login-body');
     document.body.style.overflow = gerandoPerfil ? 'hidden' : 'auto';
+  
     return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
       document.body.classList.remove('login-body');
       document.body.style.overflow = 'auto';
     };
   }, [gerandoPerfil]);
+  
+  
+  
 
   const sair = () => navigate('/');
 
@@ -68,17 +81,38 @@ export default function QuestionarioAluno() {
   ];
 
   const formatarPerfilIA = (texto) => {
-    return texto
+    const textoSemRoadmap = texto.replace(/## Roadmap Vocacional[\s\S]*$/, '');
+  
+    return textoSemRoadmap
       .replace(/^---$/gm, '')
-      .replace(/^## (.+)$/gm, '<h4>$1</h4>')
-      .replace(/^### (.+)$/gm, '<h4>$1</h4>')
-      .replace(/^#### (.+)$/gm, '<h5>$1</h5>')
-      .replace(/^(\d+\.\s+Desafio: .+)$/gm, '<h5>$1</h5>')
+      .replace(/^\s*#{1,6}\s*$/gm, '') // remove linhas com apenas hashes (mesmo com espaços)
+      .replace(/^\s*######\s*(.+)$/gm, '<h6>$1</h6>')
+      .replace(/^\s*#####\s*(.+)$/gm, '<h5>$1</h5>')
+      .replace(/^\s*####\s*(.+)$/gm, '<h4>$1</h4>')
+      .replace(/^\s*###\s*(.+)$/gm, '<h4>$1</h4>')
+      .replace(/^\s*##\s*(.+)$/gm, '<h3>$1</h3>')
+      .replace(/^\s*#\s*(.+)$/gm, '<h2>$1</h2>')
+      .replace(/^(\d+\.\s+Desafio: .+)$/gm, '<h4>$1</h4>')
       .replace(/^\s*Como superar:\s*(.+)$/gm, '<p><strong>Como superar:</strong> $1</p>')
-      .replace(/^\s*\*\s*/gm, '') // remove * soltos
+      .replace(/^\s*\*\s*/gm, '') // remove asteriscos soltos
       .replace(/\n{2,}/g, '\n')
-      .replace(/Perfil Vocacional:/g, 'Perfil Vocacional Detalhado: <br/><br/>');
+      .replace(/^##?\s*Perfil Vocacional.*$/gm, '<h3>Perfil Vocacional Detalhado</h3>');
   };
+  
+
+  const extrairRoadmap = (texto) => {
+    const roadmapRegex = /## Roadmap Vocacional([\s\S]*?)(?:\n##|\n###|$)/; 
+    const match = texto.match(roadmapRegex);
+    if (!match) return [];
+  
+    const linhas = match[1]
+      .split('\n')
+      .filter(l => /^\d+\./.test(l))  // só pega linhas que começam com número
+      .map(l => l.replace(/^\d+\.\s*/, '').trim());
+  
+    return linhas;
+  };
+  
   
   const customStyles = {
     control: (base) => ({
@@ -217,6 +251,9 @@ export default function QuestionarioAluno() {
           Como superar: [explicação da solução]
     
     Evite usar asteriscos (*) ou marcações soltas. Use estrutura clara com títulos, subtítulos e listas.
+
+    6. Roadmap Vocacional — gere uma lista numerada com até 8 etapas, representando um passo a passo de desenvolvimento profissional para esse aluno. Use títulos curtos e objetivos para cada etapa, e organize em ordem lógica de progressão. Comece com o título "## Roadmap Vocacional".
+
     `;
 
     const resposta = await callGenAI(prompt);
@@ -291,11 +328,11 @@ export default function QuestionarioAluno() {
         </button>
         <button
           type="button"
-          onClick={() => navigate('/trilhas')}
+          onClick={() => navigate('/inicio')}
           disabled={!perfilGerado}
           style={!perfilGerado ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
         >
-          Ver Trilhas Sugeridas
+          Ver Meu Perfil e Recomendações
         </button>
       </form>
 
@@ -316,14 +353,39 @@ export default function QuestionarioAluno() {
       {gerandoPerfil && <StarLoader />}
 
       {perfilIA && !gerandoPerfil && (
-        <div className="perfil-ia">
-          <h3 className="perfil-ia-titulo">🔹 Perfil Vocacional Gerado</h3>
-          <div
-            className="perfil-ia-conteudo"
-            dangerouslySetInnerHTML={{ __html: formatarPerfilIA(perfilIA.replace(/\*\*/g, '')) }}
-          />
-        </div>
-      )}
+  <>
+    <div className="perfil-ia">
+      <h3 className="perfil-ia-titulo">🔹 Perfil Vocacional Gerado</h3>
+      <div
+        className="perfil-ia-conteudo"
+        dangerouslySetInnerHTML={{ __html: formatarPerfilIA(perfilIA.replace(/\*\*/g, '')) }}
+      />
     </div>
+
+   {/* Roadmap Vocacional (Estrutura de Fluxograma) */}
+    {extrairRoadmap(perfilIA).length > 0 && (
+ <div className="roadmap-vocacional">
+  <h3 className="perfil-ia-titulo">🗺️ Roadmap Vocacional (Passo a Passo)</h3>
+  <div className="fluxograma-container">
+  {extrairRoadmap(perfilIA).map((etapa, index, array) => (
+   <React.Fragment key={index}>
+   <div className="fluxograma-etapa">
+    <div className="etapa-icone">{index + 1}</div>
+    <div className="etapa-conteudo">
+    <p className="etapa-texto">{etapa}</p>
+    </div>
+   </div>
+   {/* Adiciona a seta de conexão entre as etapas (exceto na última) */}
+   {index < array.length - 1 && (
+    <div className="fluxograma-seta">→</div>
+   )}
+   </React.Fragment>
+  ))}
+  </div>
+ </div>
+ )}
+  </>
+)}
+</div> 
   );
 }

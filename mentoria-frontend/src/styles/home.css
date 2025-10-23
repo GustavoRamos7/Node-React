@@ -494,3 +494,59 @@ body.login-body {
   font-size: 0.9rem;
   margin-top: 0.3rem;
 }
+
+
+/* TRILHAS */
+
+.trilha-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #111;
+  border: 1px solid #00ffe7;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.trilha-numero {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #00ffe7;
+  color: #000;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+}
+
+.trilha-conteudo {
+  flex: 1;
+}
+
+.trilha-titulo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: #00ffe7;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.trilha-descricao {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.trilha-detalhes p {
+  font-size: 0.9rem;
+  color: #eee;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}

@@ -10,16 +10,24 @@
     "axios": "^1.12.2",
     "bootstrap": "^5.3.8",
     "classnames": "^2.5.1",
+    "marked": "^16.4.1",
     "react": "^19.2.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.0",
     "react-input-mask": "^3.0.0-alpha.2",
+    "react-mermaid2": "^0.1.4",
     "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^7.9.4",
     "react-scripts": "5.0.1",
     "react-select": "^5.10.2",
+    "react-table": "^7.8.0",
     "react-toastify": "^11.0.5",
+    "sweetalert2": "^11.26.3",
     "web-vitals": "^2.1.4"
+  },
+  "resolutions": {
+    "react-mermaid2/react": "19.2.0",
+    "react-mermaid2/react-dom": "19.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

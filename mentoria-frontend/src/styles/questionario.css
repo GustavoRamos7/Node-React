@@ -122,14 +122,14 @@ body.login-body {
      PERFIL IA
   ========================= */
   
-  .perfil-ia {
+  /* .perfil-ia {
     margin-top: 2rem;
     background-color: #111;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
     color: #ccc;
-  }
+  } */
   
   .perfil-ia h3 {
     color: #00ffe7;
@@ -205,15 +205,15 @@ body.login-body {
   ========================= */
 
   .perfil-ia {
-    margin-top: 08rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #0f0f0f, #111);
+    background: linear-gradient(135deg, #0a0a0a, #001f1f);
     border: 1px solid #00ffe7;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
     color: #e0fdfd;
     font-family: 'Orbitron', sans-serif;
     animation: fadeIn 0.6s ease-in-out;
+    font-size: 1rem;
   }
   
   .perfil-ia-titulo {
@@ -230,21 +230,22 @@ body.login-body {
     font-weight: 400;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     text-align: left;
+    font-size: 1rem;
   }
   
-  
-  
+
   .perfil-ia-conteudo {
     white-space: pre-wrap;
     word-break: break-word;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     color: #fff;
     padding-left: 0.5rem;
-    border-left: 2px solid #00ffe7;
+    border-left: none;
+    font-size: 1rem;
   }
   
   .perfil-ia-conteudo h4,
@@ -255,6 +256,7 @@ body.login-body {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 1rem;
 }
 
 
@@ -263,12 +265,181 @@ body.login-body {
   margin-bottom: 1rem;
   list-style-type: disc;
   text-align: left;
+  font-size: 1rem;
 }
 
 .perfil-ia-conteudo li {
   color: #fff;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   margin-bottom: 0.5rem;
   line-height: 1.6;
+  font-size: 1rem;
 }
 
+
+
+
+.roadmap-vocacional {
+  background: linear-gradient(180deg, #152c3e, #0a0a0a);
+  border-radius: 12px;
+  box-shadow: 0px 0px 16px 0px rgba(0, 255, 255, 0.2);
+  padding: 32px;
+  margin-top: 48px;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.roadmap-blocos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.roadmap-bloco {
+  display: flex;
+  align-items: flex-start;
+  background-color: #111;
+  border: 1px solid #00ffe7;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.roadmap-bloco-numero {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #00ffe7;
+  color: #000;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+}
+
+.roadmap-bloco-conteudo {
+  flex: 1;
+}
+
+.roadmap-bloco-titulo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: #00ffe7;
+  margin: 0;
+}
+
+.roadmap-bloco-descricao {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 0.3rem;
+}
+
+
+/* =========================
+    FLUXOGRAMA VOCACIONAL
+========================= */
+
+.fluxograma-container {
+  /* Define o layout horizontal para as etapas e setas */
+  display: flex; 
+  flex-wrap: nowrap; /* Impede quebras de linha no fluxo principal */
+  gap: 15px;
+  align-items: stretch; /* Garante que os blocos tenham altura similar */
+  margin-top: 20px;
+  padding: 10px;
+  overflow-x: auto; /* Permite rolar horizontalmente se não couber */
+  justify-content: flex-start; /* Alinha o início do fluxograma */
+}
+
+.fluxograma-bloco {
+  /* Estilo do bloco de cada etapa */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Impede que os blocos diminuam */
+  width: 180px; /* Largura fixa */
+  min-height: 120px;
+  
+  /* Neon Look (Mantendo sua paleta) */
+  background-color: #1a1a2e; 
+  border: 2px solid #00ffe7; 
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); 
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+.fluxograma-bloco:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+}
+
+.fluxograma-numero {
+  /* Estilo do número da etapa */
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #00ffe7; 
+  color: #000;
+  font-size: 1.4em;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 231, 0.8);
+}
+
+.fluxograma-texto {
+  /* Estilo do texto da etapa */
+  font-size: 0.9em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.fluxograma-seta {
+  /* Estilo da seta de conexão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4em;
+  color: #00ffe7;
+  font-weight: 900;
+  align-self: center; /* Alinha no meio verticalmente */
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+.fluxograma-seta:hover {
+  color: #00ffff; /* Um leve brilho ao passar o mouse */
+}
+
+/* Responsividade: Muda para layout de Timeline Vertical em telas pequenas */
+@media (max-width: 768px) {
+  .fluxograma-container {
+      flex-direction: column; /* Coloca as etapas em coluna */
+      align-items: center; /* Centraliza tudo na coluna */
+      overflow-x: hidden; /* Remove rolagem horizontal desnecessária */
+  }
+
+  .fluxograma-bloco {
+      width: 90%; /* Ocupa a maior parte da largura */
+      max-width: 350px;
+      margin-bottom: 5px; /* Reduz a margem */
+  }
+
+  .fluxograma-seta {
+      /* Gira a seta para apontar para baixo e a ajusta verticalmente */
+      transform: rotate(90deg);
+      margin: 10px 0;
+      font-size: 3.5em; 
+  }
+}

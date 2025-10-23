@@ -73,7 +73,7 @@ export default function Home() {
           Se você é mentor ou administrador, acesse o painel de controle para acompanhar o desempenho dos alunos,
           gerenciar mentorias e visualizar dados em tempo real.
         </p>
-        <button onClick={() => navigate('/dashboard')} className="section-button">
+        <button onClick={() => navigate('/gestor')} className="section-button">
           Acessar painel de controle
         </button>
       </section>

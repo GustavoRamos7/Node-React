@@ -1,0 +1,173 @@
+.gestor-page {
+    padding: 2rem;
+    background-color: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .form-trilha input,
+  .form-trilha textarea,
+  .form-trilha select {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #111;
+    color: #00ffe7;
+    border: 1px solid #00ffe7;
+    border-radius: 4px;
+  }
+  
+  .form-trilha button {
+    background-color: #00ffe7;
+    color: #000;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .trilha-card {
+    background-color: #111;
+    border: 1px solid #00ffe7;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+  }
+
+
+  /* =========================
+   SELECT ESTILO DE APRENDIZAGEM / INTERESSES
+========================= */
+
+.select-estilo {
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.select-estilo .react-select__control {
+  background-color: #111;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  color: #fff;
+  min-height: 45px;
+  border-radius: 8px;
+}
+
+.select-estilo .react-select__value-container {
+  padding: 4px 8px;
+}
+
+.select-estilo .react-select__multi-value {
+  background-color: #00ffe7;
+  color: #000;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.select-estilo .react-select__multi-value__label {
+  color: #000;
+  font-size: 0.9rem;
+}
+
+.select-estilo .react-select__multi-value__remove {
+  color: #000;
+  cursor: pointer;
+}
+
+.select-estilo .react-select__option {
+  background-color: #111;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+}
+
+.select-estilo .react-select__option--is-focused {
+  background-color: #00ffe7;
+  color: #000;
+}
+
+/* =========================
+   SELECT NÍVEL DE CARREIRA
+========================= */
+
+.cadastro-form select {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #111;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.cadastro-form select:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+}
+
+/* TRILHAS */
+.trilha-card {
+    background-color: #111;
+    border: 1px solid #00ffe7;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+  }
+  
+  .trilha-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .trilha-numero {
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #00ffe7;
+    color: #000;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+  }
+  
+  .trilha-titulo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: #00ffe7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  
+  .trilha-descricao {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .trilha-footer {
+    margin-top: auto;
+    border-top: 1px solid #00ffe7;
+    padding-top: 1rem;
+  }
+  
+  .trilha-footer p {
+    font-size: 0.9rem;
+    color: #eee;
+    margin: 0.4rem 0;
+    line-height: 1.4;
+  }
+  
