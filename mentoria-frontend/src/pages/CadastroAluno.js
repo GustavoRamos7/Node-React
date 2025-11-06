@@ -106,7 +106,7 @@ export default function CadastroAluno() {
     <div className="cadastro-page">
       <Navbar />
       <div className="cadastro-section">
-        <h2>📝 Cadastro de Aluno</h2>
+        <h2>Cadastro de Aluno</h2>
         <form onSubmit={handleSubmit} className="cadastro-form">
           <label>Nome:</label>
           <input

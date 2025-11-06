@@ -24,7 +24,7 @@ export async function callGenAI(prompt) {
     const output = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
     return { output };
   } catch (error) {
-    console.error('❌ Erro na chamada da IA:', error);
+    console.error(' Erro na chamada da IA:', error);
     return { output: '' };
   }
 }

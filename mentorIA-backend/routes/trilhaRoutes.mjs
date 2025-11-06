@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import db from '../config/db.mjs';
 
-// 🔹 Buscar trilhas sugeridas
+// Buscar trilhas sugeridas
 router.post('/trilhas/sugeridas', async (req, res) => {
   const { alunoId } = req.body;
 
@@ -36,7 +36,7 @@ router.post('/trilhas/sugeridas', async (req, res) => {
   }
 });
 
-// 🔹 Atribuir trilha ao aluno
+// Atribuir trilha ao aluno
 router.post('/trilhas/atribuir', async (req, res) => {
   const { alunoId, trilhaId } = req.body;
 
@@ -75,7 +75,7 @@ router.post('/trilhas/atribuir', async (req, res) => {
   }
 });
 
-// 🔹 Cadastrar nova trilha
+// Cadastrar nova trilha
 router.post('/trilhas/cadastrar', async (req, res) => {
   const { titulo, descricao, estilo_aprendizagem, interesses, nivel_carreira } = req.body;
 
@@ -92,7 +92,7 @@ router.post('/trilhas/cadastrar', async (req, res) => {
   }
 });
 
-// 🔹 Listar todas as trilhas
+// Listar todas as trilhas
 router.get('/trilhas', async (req, res) => {
   try {
     const [trilhas] = await db.query(`SELECT * FROM trilha_estudo`);
@@ -103,7 +103,7 @@ router.get('/trilhas', async (req, res) => {
   }
 });
 
-// 🔹 Editar trilha
+// Editar trilha
 router.put('/trilhas/:id', async (req, res) => {
   const { id } = req.params;
   const { titulo, descricao, estilo_aprendizagem, interesses, nivel_carreira } = req.body;
@@ -126,7 +126,7 @@ router.put('/trilhas/:id', async (req, res) => {
   }
 });
 
-// 🔹 Excluir trilha
+// Excluir trilha
 router.delete('/trilhas/:id', async (req, res) => {
   const { id } = req.params;
 
@@ -144,7 +144,7 @@ router.delete('/trilhas/:id', async (req, res) => {
   }
 });
 
-// 🔹 Função auxiliar para calcular score
+// Função auxiliar para calcular score
 function calcularScore(perfil, trilha) {
   let score = 0;
 

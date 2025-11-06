@@ -154,7 +154,7 @@ export default function Gestor() {
 
   return (
     <div className="gestor-page">
-      {/* 🧭 Navbar fixa no topo */}
+      {/* Navbar fixa no topo */}
       <Navbar />
 
       <div className="cadastro-section">

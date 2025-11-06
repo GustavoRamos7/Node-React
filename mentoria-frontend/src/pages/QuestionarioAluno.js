@@ -9,8 +9,6 @@ import StarLoader from '../components/StarLoader';
 import Swal from 'sweetalert2';
 import Navbar from '../components/Navbar';
 
-
-
 export default function QuestionarioAluno() {
   const navigate = useNavigate();
   const alunoId = localStorage.getItem('alunoId'); // ✅ Correto agora
@@ -41,7 +39,6 @@ export default function QuestionarioAluno() {
     };
   }, [gerandoPerfil]);
   
-    
 
   // const sair = () => navigate('/');
 
@@ -279,11 +276,11 @@ export default function QuestionarioAluno() {
 
   return (
     <div className="questionario-page">
-    {/* 🧭 Navbar fixa no topo */}
+    {/* Navbar fixa no topo */}
     <Navbar />
         <div className="cadastro-section">
          
-      <h2>🧠 Questionário Vocacional</h2>
+      <h2>Questionário Vocacional</h2>
 
       <form className="cadastro-form">
         <label>Estilos de Aprendizagem:</label>

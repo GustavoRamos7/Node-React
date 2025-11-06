@@ -127,7 +127,7 @@ export default function GestorTrilhaAluno() {
 
   return (
     <div className="gestor-atribuir">
-      <h2>📋 Alunos Cadastrados</h2>
+      <h2>Alunos Cadastrados</h2>
       <table className="tabela-alunos">
         <thead>
           <tr>

@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      {/* 🧭 Navbar moderna */}
+      {/* Navbar moderna */}
       <nav className="navbar-top">
         <div className="logo">🤖 MentorIA</div>
         <ul className="nav-links">
@@ -41,13 +41,13 @@ export default function Home() {
         </ul>
       </nav>
 
-      {/* 🏠 Seção inicial */}
+      {/* Seção inicial */}
       <header className="hero-section">
         <h1>Bem-vindo à <span>MentorIA</span></h1>
         <p>Conectando mentes com inteligência artificial e mentoria humana.</p>
       </header>
 
-            {/* 📝 Seção de Cadastro */}
+            {/* Seção de Cadastro */}
       <section id="cadastro" className="section">
         <h2>🚀 Inscreva-se na Mentoria</h2>
         <p>
@@ -66,7 +66,7 @@ export default function Home() {
       </div>
       </section>
 
-      {/* 🧠 Seção da Área do Mentor */}
+      {/* Seção da Área do Mentor */}
       <section id="mentor" className="section">
         <h2>🧩 Área do Mentor</h2>
         <p>
@@ -78,7 +78,7 @@ export default function Home() {
         </button>
       </section>
 
-      {/* 💡 Sobre nós */}
+      {/* Sobre nós */}
       <section id="sobre-nos" className="section">
         <h2>Sobre Nós</h2>
         <p>
@@ -87,7 +87,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* 🧠 Serviços */}
+      {/* Serviços */}
       <section id="servicos" className="section">
         <h2>Nossos Serviços</h2>
         <p>

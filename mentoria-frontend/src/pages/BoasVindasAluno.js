@@ -39,7 +39,7 @@ export default function BoasVindasAluno() {
     };
   }, [alunoId, navigate]);
 
-  // 🔹 Formata o texto do perfil IA (mesma lógica do questionário)
+  // Formata o texto do perfil IA (mesma lógica do questionário)
   const formatarPerfilIA = (texto) => {
     const textoSemRoadmap = texto.replace(/## Roadmap Vocacional[\s\S]*$/, '');
     return textoSemRoadmap
@@ -54,7 +54,7 @@ export default function BoasVindasAluno() {
       .replace(/^##?\s*Perfil Vocacional.*$/gm, '<h4>Perfil Vocacional Detalhado</h4>');
   };
 
-  // 🔹 Extrai roadmap vocacional do texto
+  // Extrai roadmap vocacional do texto
   const extrairRoadmap = (texto) => {
     const roadmapRegex = /## Roadmap Vocacional([\s\S]*?)(?:\n##|\n###|$)/;
     const match = texto.match(roadmapRegex);
@@ -65,7 +65,7 @@ export default function BoasVindasAluno() {
       .map(l => l.replace(/^\d+\.\s*/, '').trim());
   };
 
-  // 🔹 Confirma antes de regerar o perfil
+  // Confirma antes de regerar o perfil
   const confirmarRegeracao = () => {
     Swal.fire({
       title: 'Regerar Perfil Vocacional?',
@@ -87,7 +87,7 @@ export default function BoasVindasAluno() {
 
   return (
     <div className="questionario-page">
-    {/* 🧭 Navbar fixa no topo */}
+    {/* Navbar fixa no topo */}
     <Navbar />
     <div className="boasvindas-page">
       <div className="boasvindas-container">
@@ -106,7 +106,7 @@ export default function BoasVindasAluno() {
               />
             </div>
 
-            {/* 🔹 Roadmap Vocacional com mesmo estilo visual do questionário */}
+            {/* Roadmap Vocacional com mesmo estilo visual do questionário */}
             {extrairRoadmap(perfilIA).length > 0 && (
               <div className="roadmap-vocacional">
                 <h3 className="perfil-ia-titulo">🗺️ Roadmap Vocacional (Passo a Passo)</h3>

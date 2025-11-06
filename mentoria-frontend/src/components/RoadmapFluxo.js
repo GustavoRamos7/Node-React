@@ -1,4 +1,3 @@
-// /src/components/RoadmapFluxograma.jsx
 import React from 'react';
 import Mermaid from 'react-mermaid2';
 

@@ -3,7 +3,7 @@ import db from '../config/db.mjs';
 
 const router = Router();
 
-// ✅ Rota para salvar ou substituir perfil
+// Rota para salvar ou substituir perfil
 router.post('/', async (req, res) => {
   const { alunoId, preferencias, interesses, metas, nivel, perfilIA } = req.body;
 
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ✅ Rota para verificar se perfil já existe
+// Rota para verificar se perfil já existe
 router.get('/verificar/:alunoId', async (req, res) => {
   const { alunoId } = req.params;
 

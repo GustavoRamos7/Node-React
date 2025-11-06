@@ -69,7 +69,7 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      {/* 🧭 Navbar fixa no topo */}
+      {/* Navbar fixa no topo */}
       <Navbar />
 
       <div className="login-section animated-login">

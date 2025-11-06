@@ -4,7 +4,6 @@ import axios from 'axios';
 import '../styles/trilhas.css';
 import { toast } from 'react-toastify';
 
-
 export default function TrilhasSugeridas() {
   const navigate = useNavigate();
   const alunoId = localStorage.getItem('alunoId');

@@ -10,7 +10,7 @@ import {
 
 const router = Router();
 
-// ✅ Cadastro de aluno
+// Cadastro de aluno
 router.post('/aluno', async (req, res) => {
   try {
     const { nome, email, senha, data_nascimento, celular, consentimento } = req.body;
@@ -53,7 +53,7 @@ router.post('/aluno', async (req, res) => {
   }
 });
 
-// ✅ Login de aluno
+// Login de aluno
 router.post('/login', async (req, res) => {
   try {
     const { email, senha } = req.body;
@@ -84,7 +84,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// ✅ Buscar trilhas sugeridas com base no perfil
+// Buscar trilhas sugeridas com base no perfil
 router.post('/trilhas/sugeridas', async (req, res) => {
   const { alunoId } = req.body;
 
@@ -118,7 +118,7 @@ router.post('/trilhas/sugeridas', async (req, res) => {
   }
 });
 
-// ✅ Remover trilha atribuída ao aluno
+// Remover trilha atribuída ao aluno
 router.delete('/trilhas/remover', async (req, res) => {
   const { alunoId, trilhaId } = req.body;
 
@@ -135,7 +135,7 @@ router.delete('/trilhas/remover', async (req, res) => {
   }
 });
 
-// ✅ Gerar conteúdo sugerido com IA
+// Gerar conteúdo sugerido com IA
 router.get('/trilha/:trilhaId/conteudo-sugerido', async (req, res) => {
   const { trilhaId } = req.params;
 
@@ -160,7 +160,7 @@ router.get('/trilha/:trilhaId/conteudo-sugerido', async (req, res) => {
 
 
 
-// ✅ Atribuir trilha ao aluno com score
+// Atribuir trilha ao aluno com score
 router.post('/trilhas/atribuir', async (req, res) => {
   const { alunoId, trilhaId } = req.body;
 
@@ -199,7 +199,7 @@ router.post('/trilhas/atribuir', async (req, res) => {
   }
 });
 
-// ✅ Visualizar trilhas atribuídas ao aluno
+// Visualizar trilhas atribuídas ao aluno
 router.get('/trilhas/sugeridas/:alunoId', async (req, res) => {
   const { alunoId } = req.params;
 
@@ -240,7 +240,7 @@ router.get('/trilha/:trilhaId', async (req, res) => {
   }
 });
 
-// 🔹 Listar todas as trilhas disponíveis no sistema (para alunos explorarem)
+// Listar todas as trilhas disponíveis no sistema (para alunos explorarem)
 router.get('/trilhas/todas', async (req, res) => {
   try {
     const [trilhas] = await db.query(`
@@ -258,7 +258,7 @@ router.get('/trilhas/todas', async (req, res) => {
 
 
 
-// 🔧 Função auxiliar para calcular score de adequação
+// Função auxiliar para calcular score de adequação
 function calcularScore(perfil, trilha) {
   let score = 0;
 

@@ -73,10 +73,10 @@ export default function GestorCadastro() {
 
   return (
     <div className="gestor-login-page">
-      {/* 🧭 Navbar fixa no topo */}
+      {/* Navbar fixa no topo */}
       <Navbar />
     <div className="cadastro-section">
-      <h2>🧑‍💼 Cadastro de Gestor</h2>
+      <h2>Cadastro de Gestor</h2>
       <form onSubmit={handleSubmit} className="cadastro-form">
         <label>Nome:</label>
         <input

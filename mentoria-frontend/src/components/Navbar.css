@@ -19,7 +19,7 @@
 /* navbar específica que queremos menor sem afetar a home */
 .navbar-geral.custom-small {
     width: 100%;
-    position: relative; /* ou fixed, se quiser que fique fixa no topo */
+    position: relative; 
     top: 0;
     left: 0;
     right: 0;
@@ -28,7 +28,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    background-color: #0a0a0a; /* ou o fundo que você estiver usando */
+    background-color: #0a0a0a;
 }
 
 /* logo, links e outros estilos continuam iguais */

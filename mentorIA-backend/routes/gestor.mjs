@@ -4,7 +4,7 @@ import db from '../config/db.mjs';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 
-// 🔐 Cadastro de gestor (com validação de e-mail autorizado)
+// Cadastro de gestor (com validação de e-mail autorizado)
 router.post('/cadastro', async (req, res) => {
   const { nome, email, senha } = req.body;
 
@@ -37,7 +37,7 @@ router.post('/cadastro', async (req, res) => {
   }
 });
 
-// 🔐 Login de gestor
+// Login de gestor
 router.post('/login', async (req, res) => {
   const { email, senha } = req.body;
 
@@ -67,7 +67,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// 📋 Listar todos os alunos com status e data formatada
+// Listar todos os alunos com status e data formatada
 router.get('/alunos', async (req, res) => {
   try {
     const [alunos] = await db.query(
@@ -85,7 +85,7 @@ router.get('/alunos', async (req, res) => {
   }
 });
 
-// 📚 Listar todas as trilhas
+// Listar todas as trilhas
 router.get('/trilhas', async (req, res) => {
   try {
     const [trilhas] = await db.query(
@@ -98,7 +98,7 @@ router.get('/trilhas', async (req, res) => {
   }
 });
 
-// 🔗 Atribuir trilha a aluno
+// Atribuir trilha a aluno
 router.post('/atribuir-trilha', async (req, res) => {
   const { aluno_id, trilha_id } = req.body;
 
@@ -120,7 +120,7 @@ router.post('/atribuir-trilha', async (req, res) => {
   }
 });
 
-// 🔹 Remover trilha atribuída a um aluno
+// Remover trilha atribuída a um aluno
 router.delete('/trilhas/remover', async (req, res) => {
   const { alunoId, trilhaId } = req.body;
 
@@ -138,7 +138,7 @@ router.delete('/trilhas/remover', async (req, res) => {
 });
 
 
-// 🧠 Obter perfil vocacional do aluno
+// Obter perfil vocacional do aluno
 router.get('/aluno/:id/perfil', async (req, res) => {
   const alunoId = req.params.id;
 

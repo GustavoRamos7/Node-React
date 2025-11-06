@@ -45,11 +45,11 @@ export default function GestorLogin() {
 
   return (
     <div className="gestor-login-page">
-      {/* 🧭 Navbar fixa no topo */}
+      {/* Navbar fixa no topo */}
       <Navbar />
 
       <div className="cadastro-section">
-        <h2>🔐 Login do Gestor</h2>
+        <h2>Login do Gestor</h2>
         <form onSubmit={logar} className="cadastro-form">
           <label>Email:</label>
           <input

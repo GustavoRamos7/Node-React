@@ -42,7 +42,7 @@ Exemplo:
   const resposta = await callGenAI(prompt);
 
   try {
-    // 🔧 Remove blocos de Markdown como ```json e ```
+    // Remove blocos de Markdown como ```json e ```
     const textoLimpo = resposta.output
       .replace(/^```json/, '')
       .replace(/^```/, '')
